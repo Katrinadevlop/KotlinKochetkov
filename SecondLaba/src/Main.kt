@@ -1,67 +1,95 @@
-fun isPositive(a:Int){
-    if (a > 0) {
-        println("Число положительное")
-    } else
-        println("Число отрицательное")
-}
+/*Лабораторная работа №2.
+Предоставить примеры использования классов: Array, IntArray, List, MutableList, Set, MutableSet,
+ Map, MutableMap. В качестве материалов использовать задачи из предыдущей лабораторной работы по вариантам.*/
 
-fun squaresNegativeNumbers(arr:Array<Int>){
-    for(i in 0 until arr.size){
+fun squaresNegativeNumbersArray(arr:Array<Int>){
+    for(i in arr.indices){
         if (arr[i] < 0)
             arr[i] = arr[i] * arr[i]
     }
-    for(i in 0 until arr.size)
-        print("${arr[i]} ")
+    for(element in arr)
+        print("$element ")
     println()
 }
 
-fun arrayOpposite(arr:Array<Int>, index:Int){
-    for(i in arr.size - 1 downTo index + 1)
-        print("${arr[i]} ")
+fun squaresNegativeNumbersArrayInt(arr:IntArray){
+    for(i in arr.indices){
+        if (arr[i] < 0)
+            arr[i] = arr[i] * arr[i]
+    }
+    for(element in arr)
+        print("$element ")
     println()
 }
 
-fun arithmeticMeanColumn(array:Array<Array<Int>>){
-    var count = 0
-    var countNumber = 0
-    for (j in 0 until array.size){
-        var sum = 0
-        for (i in 0 until array.size) {
-            sum += array[i][j]
-        }
-        val srArif = sum / array.size
-        for(i in array.indices)
-            if (array[i][j] == srArif)
-                count++
+fun squaresNegativeNumbersList(arr: List<Int>){
+    val array = arr.iterator()
+    while(array.hasNext()){
+        val tmp = array.next()
+        if (tmp < 0)
+            print("${tmp * tmp} ")
+        else
+            print("$tmp ")
     }
-    println(count)
+    println()
 }
 
-fun addingSymbol(str:String){
-    val str1 = str.split(" ").toMutableList()
-    for(i in str1.indices) {
-        str1[i] = "_" + str1[i]
+fun squaresNegativeNumbersMutableList(arr:MutableList<Int>) {
+    for (i in 0..<arr.size) {
+        if (arr[i] < 0)
+            arr[i] = arr[i] * arr[i]
     }
-    println(str1.joinToString(" "))
+
+    arr.forEachIndexed() { _, name ->
+        print("$name ")
+    }
 }
+
+fun squaresNegativeNumbersSet(arr: Set<Int>) {
+    val set = arr.map{if (it < 0) it*it else it}
+    println(set)
+}
+
+fun squaresNegativeNumbersMutableSet(arr: MutableSet<Int>) {
+    val set = arr.map{if (it < 0) it*it else it}
+    println(set)
+}
+
+fun squaresNegativeNumbersMap(arr: Map<String, Int>) {
+    val set = arr.map{it.key to if (it.value < 0) it.value * it.value else it.value}.toMap()
+    println(set)
+}
+
+
+fun squaresNegativeNumbersMutableMap(arr: MutableMap<String, Int>) {
+    val set = arr.map{it.key to if (it.value < 0) it.value * it.value else it.value}.toMap()
+    println(set)
+}
+
 
 fun main() {
-    val number = readln().toInt()
-    isPositive(number)
+    val arrayNumber: Array<Int> = arrayOf(1, -2, -3, 4, 5, -6, 7, 8, -9, 10)
+    squaresNegativeNumbersArray(arrayNumber)
 
-    val arrayNumberInt: Array<Int> = arrayOf(1, -2, -3, 4, 5, -6, 7, 8, -9, 10)
-    squaresNegativeNumbers(arrayNumberInt)
+    val arrayNumberInt: IntArray = intArrayOf(1, -2, -3, 4, 5, -6, 7, 8, -9, 10)
+    squaresNegativeNumbersArrayInt(arrayNumberInt)
 
-    val index = readln().toInt()
-    arrayOpposite(arrayNumberInt, index)
+    val arrayList: List<Int> = listOf(1, -2, -3, 4, 5, -6, 7, 8, -9, 10)
+    squaresNegativeNumbersList(arrayList)
 
-    val arrayNumber = arrayOf(
-        arrayOf(1, 2, 3),
-        arrayOf(4, 5, 6),
-        arrayOf(7, 8, 9)
-    )
-    arithmeticMeanColumn(arrayNumber)
+    val arrayMutableList: MutableList<Int> = mutableListOf(1, -2, -3, 4, 5, -6, 7, 8, -9, 10)
+    squaresNegativeNumbersMutableList(arrayMutableList)
+    println()
 
-    val str = readln()
-    addingSymbol(str)
+    val arraySet:Set<Int> = setOf(1, -2, -3, 4, 5, -6, 7, 8, -9, 10)
+    squaresNegativeNumbersSet(arraySet)
+
+    val arrayMutableSet:MutableSet<Int> = mutableSetOf(1, -2, -3, 4, 5, -6, 7, 8, -9, 10)
+    squaresNegativeNumbersMutableSet(arrayMutableSet)
+
+    val arrayMap:Map<String, Int> = mapOf("1" to 1, "-2" to -2, "-3" to -3, "4" to 4, "5" to 5, "-6" to -6, "7" to 7, "8" to 8, "-9" to -9, "10" to 10)
+    squaresNegativeNumbersMap(arrayMap)
+
+    val arrayMutableMap:MutableMap<String, Int> = mutableMapOf("1" to 1, "-2" to -2, "-3" to -3, "4" to 4, "5" to 5, "-6" to -6, "7" to 7, "8" to 8, "-9" to -9, "10" to 10)
+    squaresNegativeNumbersMutableMap(arrayMutableMap)
 }
