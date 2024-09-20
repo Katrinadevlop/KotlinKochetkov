@@ -7,6 +7,7 @@ import javax.management.StringValueExp
 3. Привести пример паттерна "Фабрика";
 4. Привести пример ИСПОЛЬЗОВАНИЯ паттерна "Строитель".*/
 
+//EnumClass
 enum class Peoples(val people:String){
     Student("Студент"){
        val age = 16
@@ -16,6 +17,7 @@ enum class Peoples(val people:String){
     }
 }
 
+//DataClass
 data class Strudent(
     val name:String,
     val age:Int,
@@ -23,6 +25,7 @@ data class Strudent(
     val isWork:Boolean
 )
 
+//Фабрика
 class Color{
     var color:String
 
@@ -41,6 +44,7 @@ class Color{
     }
 }
 
+//Строитель
 class Item{
 
     private constructor()
