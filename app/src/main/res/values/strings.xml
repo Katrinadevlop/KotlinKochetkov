@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Laba27</string>
+    <string-array name="comands">
+        <item>Найти указанное слово</item>
+        <item>Найти указанное слово, с учетом окончаний</item>
+        <item>Найти слова с одинаковым корнем</item>
+        <item>Посчитать кол-во слов, длина более 5 сим</item>
+        <item>Найти в тексте все даты</item>
+        <item>Найти в тексте все время</item>
+        <item>Разделить текст по определённому слову</item>
+        <item>Определить  что ответил ребёнок на тел</item>
+    </string-array>
+</resources>
